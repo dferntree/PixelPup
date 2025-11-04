@@ -1,0 +1,171 @@
+.app {
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#top-section {
+  flex-shrink: 0;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  white-space: nowrap;
+}
+
+h4 {
+  font-size: 12px;
+  margin: 15px 0 10px 0;
+}
+
+#sprite {
+  width: 148px;
+  height: 148px;
+  margin: 10px auto 0 auto;
+  margin-top: 10px;
+  padding-left: 25px;
+}
+
+#task-form {
+  position: relative;
+  z-index: 2;
+  background-color: #1b1f3b;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 240px;
+}
+
+#task-form input {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#task-form select {
+  font-family: inherit;
+  font-size: 10px;
+}
+
+#task-controls {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+#task-controls select,
+#task-controls button {
+  flex: 1;
+  height: 30px;
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+#task-form button {
+  background-color: #3a3f69;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 8px 12px;
+  border: 2px solid #575aa3;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  box-shadow: 0 0 0 2px #1b1f3b;
+  margin-top: 10px;
+}
+
+#task-form button:hover {
+  background-color: #575aa3;
+}
+
+#task-form select {
+  height: 30px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 0 6px;
+  border: 2px solid #575aa3;
+  border-radius: 4px;
+  background-color: #2a2e52;
+  color: white;
+  outline: none;
+  user-select: none;
+  margin-top: 10px;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 320px;
+}
+
+#task-list li {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#task-list button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+#task-list button:hover {
+  color: #ff6b6b;
+}
+
+#task-list input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#scrollable-content {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+#scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#scrollable-content::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7);
+  border-radius: 4px;
+}
+
+#scrollable-content::-webkit-scrollbar-track {
+  background: transparent;
+}
