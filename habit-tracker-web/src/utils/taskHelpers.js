@@ -1,14 +1,10 @@
-function allDailyTasksDone() {
-  return tasks.filter(t => t.daily).every(t => t.done);
-}
-
-function resetDailyTasks() {
+export function resetDailyTasks() {
   tasks.forEach(t => {
     if (t.daily) t.done = false;
   });
 }
 
-function getLocalDateString(){
+export function getLocalDateString(){
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -16,19 +12,35 @@ function getLocalDateString(){
   return `${yyyy}-${mm}-${dd}`;
 }
 
-function checkDailyStreak() {
-  const todayStr = getLocalDateString();
-  if (lastCheckDate !== todayStr) {
-    if (lastCheckDate !== null) {
-      if (!allDailyTasksDone()) streak = 0;
-      else streak++;
-    }
-    resetDailyTasks();
-    lastCheckDate = todayStr;
-    saveTasks();
-  }
+export function checkDailyStreak(tasks, lastCheckDate, streak) {
+
 }
 
-function getEmotion(){
-    
+export function getSpriteEmotion(tasks, isInputFocused){
+  const now = new Date()
+  const hour = now.getHours()
+
+  if(isInputFocused) {
+    return "../public/BlueDoggyTHINKING1.1.png"
+  }
+
+  if(hour >= 23 || hour < 6) {
+    return "../public/BlueDoggySLEEPY1.1.png"
+  }
+
+  if(tasks.length === 0){
+    return "../public/BlueDoggyIDLE1.1.png"
+  }
+
+  const doneCount = tasks.filter(t => t.done).length
+
+  if(doneCount === tasks.length){
+    return "../public/BlueDoggyHAPPY1.1.png"
+  }
+
+  if(doneCount === 0){
+    return "../public/BlueDoggySAD1.1.png"
+  }
+
+  return "/BlueDoggyIDLE1.1.png"   
 }

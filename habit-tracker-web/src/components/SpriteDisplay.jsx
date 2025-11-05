@@ -1,8 +1,6 @@
-function SpriteDisplay(){
+function SpriteDisplay({ spriteSrc }){
     return(
-        <div className = "sprite">
-            <img src = "BlueDoggyIDLE1.1.png"></img>
-        </div>
+        <img className = "sprite" src = {spriteSrc}/>
     );
 }
 
