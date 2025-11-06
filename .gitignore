@@ -1,0 +1,14 @@
+# Node
+node_modules/
+*/node_modules/
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store

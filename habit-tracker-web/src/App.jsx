@@ -50,7 +50,6 @@ function App() {
       setTasks(resetDailyTasks)
     }
     setLastCheckDate(todayStr)
-    console.log(todayStr)
   })
 
   return (
