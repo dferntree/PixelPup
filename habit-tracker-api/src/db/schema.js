@@ -8,10 +8,11 @@ const tasks = pgTable('tasks', {
     daily: boolean('daily').default(false).notNull(),
 });
 
-const streakData = pgTable('streak_data', {
-    userId: text('user_id').primaryKey(),
+const userData = pgTable('user_data', {
+    id : serial('id').primaryKey(), //uniquely identifies row
+    email: text('email').notNull(),
     streak: integer('streak').default(0).notNull(),
     lastCheckDate: date('last_check_date'),
 });
 
-module.exports = { tasks, streakData }
+module.exports = { tasks, userData }

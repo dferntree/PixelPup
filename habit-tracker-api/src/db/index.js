@@ -20,7 +20,7 @@ module.exports = { db }
 // Exports db for other files to use
 
 /*
-Steps:
+Steps to connect Drizzle to postgres:
 
 1. Import Drizzle, Postgres, and load env variables
 
