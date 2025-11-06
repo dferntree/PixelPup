@@ -1,4 +1,4 @@
-function Header({ streak, setStreak }) {
+function Header({ streak }) {
     const plural = streak === 1 ? " " : "s"
     const fire = streak > 0 ? "🔥" : ""
 

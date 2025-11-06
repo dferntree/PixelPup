@@ -1,5 +1,5 @@
 import './App.css'
-import { getSpriteEmotion,  checkDailyStreak, getLocalDateString} from './utils/taskHelpers'
+import { getSpriteEmotion, getLocalDateString, consecutiveDays, resetDailyTasks} from './utils/taskHelpers'
 import SpriteDisplay from './components/SpriteDisplay';
 import Header from './components/Header'
 import TaskList from './components/TaskList'
@@ -29,14 +29,35 @@ function App() {
   const addTask = (task) => {
     setTasks(prev => [task, ...prev])
   }
+  
+  useEffect(() => {
+    const todayStr = getLocalDateString()
+    
+    if(lastCheckDate === null){
+      setLastCheckDate(todayStr)
+      return
+    }
 
+    if(lastCheckDate === todayStr){
+      return
+    }
+
+    if(consecutiveDays(lastCheckDate, todayStr)) {
+      setStreak(s => s + 1)
+      setTasks(resetDailyTasks)
+    } else {
+      setStreak(0)
+      setTasks(resetDailyTasks)
+    }
+    setLastCheckDate(todayStr)
+    console.log(todayStr)
+  })
 
   return (
     <div className = 'app'>
       <div id = "top-section">
         <Header 
           streak = {streak}
-          setStreak = {setStreak} 
         />
       </div>
         <SpriteDisplay spriteSrc = {spriteSrc}/>
