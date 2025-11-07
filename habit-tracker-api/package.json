@@ -1,19 +1,28 @@
 {
   "name": "habit-tracker-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend API for PixelPup habit tracker",
+  "main": "src/index.js",
   "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
     "drizzle-orm": "^0.44.7",
+    "express": "^4.21.1",
     "postgres": "^3.4.7"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.6"
+    "drizzle-kit": "^0.31.6",
+    "nodemon": "^3.1.7"
   }
 }

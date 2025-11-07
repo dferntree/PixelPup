@@ -10,6 +10,7 @@ const tasks = pgTable('tasks', {
 
 const userData = pgTable('user_data', {
     id : serial('id').primaryKey(), //uniquely identifies row
+    userId: text('user_id').notNull(), //firebase
     email: text('email').notNull(),
     streak: integer('streak').default(0).notNull(),
     lastCheckDate: date('last_check_date'),

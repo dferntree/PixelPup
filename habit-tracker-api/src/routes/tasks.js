@@ -15,6 +15,16 @@ PUT  - Replace entire resource
 DELETE - Remove resource
 */
 
+/*REQ OBJ : /api.tasks?userId=abc123&limit=10&filter=active
+
+1) ':' is a dynamic route, where any token after the / will match
+2) Different parts of req obj
+    2a) req.query (URL query after '?')
+    2b) req.params (URL params before '?')
+    2c) body
+3) '?' is a delimiter that separates the path from the query string
+*/
+
 // GET /api/tasks?userId = xxx
 router.get('/', async (req, res) => { // (req, res) are handler function params, request contains data, response sends data back
     try {
@@ -44,3 +54,31 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error : error.message })
     }
 })
+
+//PATCH /api/tasks/:id
+router.patch('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const { done } = req.body
+        const [updated] = await db.update(tasks)
+            .set({ done }) //sets done to true
+            .where(eq(tasks.id, id)) //where the tasks id = id
+            .returning()
+        res.json(updated)
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
+
+//DELETE /api/tasks/:id
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params // take id from request param to find task
+        await db.delete(tasks).where(eq(tasks.id, id))
+        res.json({ success : true })
+    } catch (error) {
+        res.status(500).json({ error : error.message })
+    }
+})
+
+module.exports = router
