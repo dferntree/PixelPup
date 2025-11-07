@@ -6,12 +6,12 @@ import { getAuth } from 'firebase/auth'
 
 // Web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAgf64KqYAH-p1jNEVrriJiu9ToTYiA5Aw",
-  authDomain: "pixelpup-3f81e.firebaseapp.com",
-  projectId: "pixelpup-3f81e",
-  storageBucket: "pixelpup-3f81e.firebasestorage.app",
-  messagingSenderId: "154946230527",
-  appId: "1:154946230527:web:2bfab61c6391f82e3d94ca"
+  apiKey: import.meta.env.FIREBASE_API_KEY,
+  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.FIREBASE_APP_ID
 };
 
 // Initialize Firebase
