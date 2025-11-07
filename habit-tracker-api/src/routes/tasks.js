@@ -19,8 +19,8 @@ DELETE - Remove resource
 
 1) ':' is a dynamic route, where any token after the / will match
 2) Different parts of req obj
-    2a) req.query (URL query after '?')
-    2b) req.params (URL params before '?')
+    2a) req.query (URL query after '?') Used to filter or provide options for a collection
+    2b) req.params (URL params before '?') Used to identify a specific resource
     2c) body
 3) '?' is a delimiter that separates the path from the query string
 */
