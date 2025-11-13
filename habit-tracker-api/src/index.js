@@ -16,6 +16,8 @@ const tasksRouter = require('./routes/tasks')
 // imports task routes
 const userDataRouter = require('./routes/userData')
 // imports user data routes
+const adviceRouter = require('./routes/advice')
+// imports AI advice routes
 
 const app = express()
 // creates instance of express
@@ -42,6 +44,7 @@ app.use(express.json())
 
 app.use('/api/tasks', tasksRouter) //route prefix
 app.use('/api/userData', userDataRouter)
+app.use('/api/advice', adviceRouter)
 //Mounts routers, any route gets the prefix above
 
 const PORT = process.env.PORT || 3001

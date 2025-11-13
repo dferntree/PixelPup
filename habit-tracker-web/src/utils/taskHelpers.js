@@ -37,7 +37,7 @@ export function getSpriteEmotion(tasks, isInputFocused){
   if(tasks.length === 0){
     return "/BlueDoggyIDLE1.1.png"
   }
-
+  
   const doneCount = tasks.filter(t => t.done).length
 
   if(doneCount === tasks.length){

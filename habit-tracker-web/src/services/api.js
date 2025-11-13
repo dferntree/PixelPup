@@ -76,3 +76,19 @@ export const deleteTask = async (taskId) => {
     if(!response.ok) throw new Error('Failed to delete task')
     return response.json()
 }
+
+// OPEN AI API
+
+export const getAIAdvice = async (taskContent, conversationHistory) => {
+    const response = await fetch(`${API_BASE}/api/advice`, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({ taskContent, conversationHistory })
+    })
+    if(!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || 'Failed to get advice')
+    }
+
+    return response.json()
+}

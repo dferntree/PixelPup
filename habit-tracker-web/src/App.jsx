@@ -3,6 +3,7 @@ import { getSpriteEmotion, getLocalDateString, consecutiveDays, resetDailyTasks}
 import SpriteDisplay from './components/SpriteDisplay';
 import Header from './components/Header'
 import TaskList from './components/TaskList'
+import AIAdvisor from './components/AIAdvisor';
 import { useEffect, useState } from 'react';
 import TaskForm from './components/TaskForm';
 import Auth from './components/Auth'
@@ -167,7 +168,11 @@ function App() {
       </div>
 
       <div className="wrapper">
-        <div className="panel-card"></div>
+        <div className="panel-card">
+          <AIAdvisor
+            tasks = {tasks}
+           />
+        </div>
 
         <div className="panel-card">
           
@@ -190,7 +195,7 @@ function App() {
             />
           </div>
           
-          <div id="scrollable-content">
+          <div className="scrollable-content">
             <TaskList
               tasks = {tasks}
               toggleTask = {toggleTask}
