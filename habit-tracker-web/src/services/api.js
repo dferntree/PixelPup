@@ -1,4 +1,7 @@
-const API_BASE = 'http://localhost:3001'
+// Use relative URL so it works in both local and Codespaces
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3001' 
+  : window.location.protocol + '//' + window.location.hostname.replace('-5173', '-3001')
 
 // HOW FETCH API WORKS
 // PARAM 1: Where to send the request
@@ -21,7 +24,10 @@ export const createUser = async (userId, email) => {
 export const getUserData = async (userId) => {
     const response = await fetch(`${API_BASE}/api/userData?userId=${userId}`) //adds query param to pass to the backend
     //No second param, defaults to GET request
-    if(!response.ok) throw new Error('Failed to fetch user data')
+    if(!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || 'Failed to fetch user data') //returns the proper error message, so that user data can be created if it doesn't exist.
+    }
     return response.json()
 }
 

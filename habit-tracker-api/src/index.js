@@ -26,8 +26,17 @@ Returns an object with methods like:
 - app.listen (starts the server)
 */
 
-app.use(cors())
+app.use(cors({
+  origin: true, // Allow all origins in development
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
 // adds cors headers to every response
+
+// Handle preflight requests explicitly
+app.options('*', cors())
+
 app.use(express.json())
 // Parses the body of incoming JSON requests, converts string to obj
 
