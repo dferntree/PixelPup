@@ -8,6 +8,7 @@ import TaskForm from './components/TaskForm';
 import Auth from './components/Auth'
 import { subscribeToAuthChanges, logoutUser} from './firebase';
 import { getTasks, createTask as apiCreateTask, toggleTask as apiToggleTask, deleteTask as apiDeleteTask, getUserData, updateStreak, createUser } from './services/api'
+import PomodoroTimer from './components/PomodoroTimer';
 
 
 function App() {
@@ -160,31 +161,48 @@ function App() {
 
   return (
     <div className = 'app'>
-      <div id = "top-section">
-        <Header 
-          streak = {streak}
-        />
-        <button onClick={handleLogout} className="logout-button">
-          Logout
-        </button>
-      </div>
-
-        <SpriteDisplay spriteSrc = {spriteSrc}/>
-
-      <div>
-        <TaskForm
-          addTask = {addTask}
-          onInputFocusChange = {setIsInputFocused}
-        />
-      </div>
       
-      <div>
-        <TaskList
-          tasks = {tasks}
-          toggleTask = {toggleTask}
-          deleteTask = {deleteTask}
-        />
-      </div>      
+      <div className="top-header">
+        <h1> PixelPup </h1>
+      </div>
+
+      <div className="wrapper">
+        <div className="panel-card"></div>
+
+        <div className="panel-card">
+          
+          <button onClick={handleLogout} className="logout-button">
+              Logout
+          </button>
+
+          <div id = "top-section">
+            <Header 
+              streak = {streak}
+            />
+          </div>
+
+            <SpriteDisplay spriteSrc = {spriteSrc}/>
+
+          <div>
+            <TaskForm
+              addTask = {addTask}
+              onInputFocusChange = {setIsInputFocused}
+            />
+          </div>
+          
+          <div id="scrollable-content">
+            <TaskList
+              tasks = {tasks}
+              toggleTask = {toggleTask}
+              deleteTask = {deleteTask}
+            />
+          </div>
+        </div>
+
+        <div className="panel-card"> 
+          <PomodoroTimer/>
+        </div>
+        </div>      
     </div>
   );
 }
