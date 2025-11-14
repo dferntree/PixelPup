@@ -53,7 +53,13 @@ function AIAdvisor({ tasks }) {
 
     return (
     <div className="ai-advisor">
-      <h3>Task Advisor</h3>
+      <div className="advisor-bar">
+        <img
+          src={loading? '../../public/BlueDoggyTHINKINGHEAD1.2.png' : '../../public/BlueDoggyHAPPYHEAD1.1.png'}
+          className="doggy-head"
+        />
+        <h3>Task Advisor</h3>
+      </div>
       
       {/* Chat history */}
       <div className="chat-history">

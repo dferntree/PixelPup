@@ -20,6 +20,7 @@ function App() {
   const [isInputFocused, setIsInputFocused] = useState(false)
   const [streak, setStreak] = useState(0)
   const [lastCheckDate, setLastCheckDate] = useState(null)
+  const [studySessions, setStudySessions] = useState(0)
   
 
   const spriteSrc = getSpriteEmotion(tasks, isInputFocused)
@@ -44,6 +45,7 @@ function App() {
         const userData = await getUserData(user.uid)
         setStreak(userData.streak || 0)
         setLastCheckDate(userData.lastCheckDate)
+        setStudySessions(userData.studySessions || 0)
 
         //load user tasks from backend
         const userTasks = await getTasks(user.uid)
@@ -145,7 +147,8 @@ function App() {
       await logoutUser()
       setTasks([])
       setStreak(0)
-      setLastCheckDate(null)    
+      setLastCheckDate(null)
+      setStudySessions(0)    
     } catch (error) {
       console.error('Logout failed:', error)
     }
@@ -188,12 +191,10 @@ function App() {
 
             <SpriteDisplay spriteSrc = {spriteSrc}/>
 
-          <div>
             <TaskForm
               addTask = {addTask}
               onInputFocusChange = {setIsInputFocused}
             />
-          </div>
           
           <div className="scrollable-content">
             <TaskList
@@ -205,7 +206,11 @@ function App() {
         </div>
 
         <div className="panel-card"> 
-          <PomodoroTimer/>
+          <PomodoroTimer
+            userId={user.uid}
+            initialSessions={studySessions}
+            onSessionUpdate={setStudySessions}
+          />
         </div>
         </div>      
     </div>

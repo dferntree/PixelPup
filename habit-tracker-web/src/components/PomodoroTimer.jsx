@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
+import { incrementStudySessions } from '../services/api'
 
 import BlueDoggyComputerDown from '../../public/BlueDoggyComputerDown.png'
 import BlueDoggyComputerUp from '../../public/BlueDoggyComputerUp.png'
 
-function PomodoroTimer() {
+function PomodoroTimer({ userId, initialSessions, onSessionUpdate }) {
     const [minutes, setMinutes] = useState(25)
     const [seconds, setSeconds] = useState(0)
    const [isActive, setIsActive] = useState(false)
    const [isWorkMode, setIsWorkMode] = useState(true)
-   const [sessionsCompleted, setSessionsCompleted] = useState(0)
    const [isHeadUp, setIsHeadUp] = useState(false)
 
    useEffect(() => {
@@ -21,7 +21,12 @@ function PomodoroTimer() {
                 if(minutes === 0){
                     setIsActive(false) // timer is done, stop it
                     if (isWorkMode) {
-                        setSessionsCompleted(prev => prev + 1) // increment session counter by 1
+                        const newCount = initialSessions + 1
+                        onSessionUpdate(newCount) // increment session counter by 1
+                        incrementStudySessions(userId, newCount).catch(err => {
+                            console.error('Failed to save study session:', err)
+                        })
+                        onSessionUpdate && onSessionUpdate(newCount)
                         setIsWorkMode(false) // switch to break mode
                         setMinutes(5) // set timer to break duration
                     } else {
@@ -41,7 +46,7 @@ function PomodoroTimer() {
         }, 1000)
     }
     return () => clearInterval(interval) //Cleanup function: when the component unmounts or effect re-runs, clear the interval
-   }, [isActive, minutes, seconds, isWorkMode])
+   }, [isActive, minutes, seconds, isWorkMode, userId, initialSessions, onSessionUpdate])
 
 const toggleTimer = () => setIsActive(!isActive)
 
@@ -73,7 +78,7 @@ return (
         </div>
 
         <div className="sessions-counter">
-            Sessions completed: {sessionsCompleted}
+            Sessions completed: {initialSessions}
         </div>
 
         <div className="Computer-Screen">

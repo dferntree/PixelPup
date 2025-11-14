@@ -41,6 +41,16 @@ export const updateStreak = async (userId, streak, lastCheckDate) => {
     return response.json()
 }
 
+export const incrementStudySessions = async (userId, newSessionCount) => {
+    const response = await fetch(`${API_BASE}/api/userData/${userId}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ studySessions: newSessionCount})
+    })
+    if (!response.ok) throw new Error('Failed to increment study sessions')
+    return response.json()
+}
+
 // TASKS API
 
 export const getTasks = async (userId) => {

@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
         const systemMessage = {
             role: "system",
-            content: `You are a helpful productivity coach for PixelPup. Give brief, encouraging advice based on the user's tasks. Be supportive and specific.\n\nCurrent tasks:\n${taskContent}`
+            content: `You are a helpful productivity coach for the PixelPup habit/productivity tracker. Give brief, encouraging advice based on the user's tasks. Be supportive and specific.\n\nCurrent tasks:\n${taskContent}`
         }
 
         const messages = [systemMessage, ...conversationHistory]

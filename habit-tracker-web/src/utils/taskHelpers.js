@@ -27,26 +27,26 @@ export function getSpriteEmotion(tasks, isInputFocused){
   const hour = now.getHours()
 
   if(isInputFocused) {
-    return "/BlueDoggyTHINKING1.1.png"
+    return "/BlueDoggyTHINKING1.2.png"
   }
 
   if(hour >= 23 || hour < 6) {
-    return "/BlueDoggySLEEPY1.1.png"
+    return "/BlueDoggySLEEPY1.2.png"
   }
 
   if(tasks.length === 0){
-    return "/BlueDoggyIDLE1.1.png"
+    return "/BlueDoggyIDLE1.2.png"
   }
   
   const doneCount = tasks.filter(t => t.done).length
 
   if(doneCount === tasks.length){
-    return "/BlueDoggyHAPPY1.1.png"
+    return "/BlueDoggyHAPPY1.2.png"
   }
 
   if(doneCount === 0){
-    return "/BlueDoggySAD1.1.png"
+    return "/BlueDoggySAD1.2.png"
   }
 
-  return "/BlueDoggyIDLE1.1.png"   
+  return "/BlueDoggyIDLE1.2.png"   
 }

@@ -14,6 +14,7 @@ const userData = pgTable('user_data', {
     email: text('email').notNull(),
     streak: integer('streak').default(0).notNull(),
     lastCheckDate: date('last_check_date'),
+    studySessions: integer('study_sessions').default(0).notNull()
 });
 
 module.exports = { tasks, userData }

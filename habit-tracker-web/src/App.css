@@ -30,11 +30,12 @@
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  justify-content: flex-start;
 }
 
 #top-section {
   flex-shrink: 0;
-  height: 120px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,11 +53,13 @@
   justify-content: center;
   align-items: center;
   padding: 0 16px;
+  padding-top: 16px;
   position: relative;
 }
 
 .pomodoro-container {
   text-align: center;
+  align-items: center;
 }
 
 .PixelPup {
@@ -66,8 +69,8 @@
 }
 
 .Sprite-PC {
-  width: 500px;
-  height:500px;
+  max-width: 525px;
+  height:600px;
 }
 
 .Computer-Screen {
@@ -104,8 +107,25 @@ h4 {
 .ai-advisor {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 100%;
   width: 100%;
+}
+
+.advisor-bar {
+  display: flex;
+  align-items: center;
+  background: #23255a;
+  padding: 0px 16px;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.doggy-head {
+  width: 128px;
+  height: 100%;
+  margin-right: 12px;
+  animation: bounce 1.6s steps(6) infinite;
 }
 
 .chat-history {
@@ -123,6 +143,7 @@ h4 {
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 6px;
+  line-height: 1.7;
 }
 
 .user-message {
@@ -170,12 +191,11 @@ h4 {
 }
 
 .sprite {
-  width: 180px;
-  height: 180px;
-  margin: 10px auto 0 auto;
-  margin-top: 10px;
-  padding-left: 25px;
-
+  max-width: 250px;
+  height: 250px;
+  margin: auto;
+  display: block;
+  animation: bounce 1.6s steps(6) infinite;
 }
 .logout-button {
   position:absolute;
@@ -200,8 +220,10 @@ h4 {
   z-index: 2;
   background-color: #1b1f3b;
   margin: 0 auto;
-  width: 100%;
-  max-width: 240px;
+  margin-bottom:10px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
 }
 
 #task-form input {
@@ -245,7 +267,10 @@ h4 {
   user-select: none;
   box-shadow: 0 0 0 2px #1b1f3b;
   margin-top: 10px;
-  margin-left: 6px;
+}
+
+.Pomodoro-Buttons {
+  margin-right: 8px;
 }
 
 #task-form button:hover {
@@ -269,8 +294,7 @@ h4 {
 #task-list {
   list-style: none;
   padding: 0;
-  margin-top: 20px;
-  width: 100%;
+  margin: 20px auto 0 auto;
   max-width: 320px;
 }
 
@@ -478,4 +502,9 @@ h4 {
   padding: 8px;
   background-color: rgba(255, 107, 107, 0.1);
   border-radius: 5px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

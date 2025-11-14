@@ -69,7 +69,8 @@ router.post('/', async (req, res) => {
                 userId,
                 email,
                 streak: 0,
-                lastCheckDate: lastCheckDate || new Date().toISOString().split('T')[0]
+                lastCheckDate: lastCheckDate || new Date().toISOString().split('T')[0],
+                studySessions: 0
             })
             .returning() //without returning, newUser gives back db metadata
 
@@ -87,16 +88,17 @@ router.patch('/:userId', async (req, res) => {
     try {
         const { userId } = req.params
 
-        const { streak, lastCheckDate } = req.body
+        const { streak, lastCheckDate, studySessions } = req.body
 
         const updates = {}
         if (streak !== undefined) updates.streak = streak
         if(lastCheckDate !== undefined) updates.lastCheckDate = lastCheckDate
+        if(studySessions !== undefined) updates.studySessions = studySessions
 
         if(Object.keys(updates).length === 0){
             return res.status(400).json({
                 error: 'No fields to update',
-                message: 'Provide at least one of: streak, lastCheckDate'
+                message: 'Provide at least one of: streak, lastCheckDate, studySessions'
             })
         }
 
